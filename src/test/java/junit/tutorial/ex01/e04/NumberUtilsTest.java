@@ -30,12 +30,14 @@ class NumberUtilsTest {
 	void testIsEven1() {
 		boolean test1 = NumberUtils.isEven(10);
 		assertEquals(true, test1, "Error");
+		System.out.println(NumberUtils.isEven(10));
 	}
 	
 	@Test
 	void testIsEven2() {
 		boolean test2 = NumberUtils.isEven(7);
 		assertEquals(false, test2, "Error");
+		System.out.println(NumberUtils.isEven(7));
 	}
 
 }
