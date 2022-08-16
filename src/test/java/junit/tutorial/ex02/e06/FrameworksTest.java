@@ -1,4 +1,4 @@
-package junit.tutorial.ex02.e05;
+package junit.tutorial.ex02.e06;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class ConsumptionTaxTest {
+class FrameworksTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -29,12 +29,12 @@ class ConsumptionTaxTest {
 	}
 
 	@ParameterizedTest
-	//"税率、入力値、期待値"
-	@CsvSource({"5,100,105",   "5,3000,3150",   "10,50,55",   "5,50,52",   "3,50,51"})
-	void testApply(int rate, int input, int actual) {
-		ConsumptionTax consumptionTax = new ConsumptionTax(rate);
-		int result = consumptionTax.apply(input);
-		assertEquals(actual, result);
+	@CsvSource({"GlassFish,Oracle,true",  "GlassFish,DB2,true",  "GlassFish,PostgreSQL,true",  "GlassFish,MySQL,true",
+		        "Tomcat,Oracle,false",    "Tomcat,DB2,false",    "Tomcat,PostgreSQL,false",    "Tomcat,MySQL,true",
+		        "JBoss,Oracle,false",     "JBoss,DB2,true",      "JBoss,PostgreSQL,true",      "JBoss,MySQL,false"})
+	void testIsSupport(ApplicationServer app, Database db, boolean expected) {
+		boolean result = Frameworks.isSupport(app, db);
+		assertEquals(expected, result);
 	}
 
 }
