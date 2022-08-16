@@ -30,6 +30,7 @@ class RangeTest {
 	@Nested
 	class range{	
 		@ParameterizedTest
+		//パラメータを入力
 		@ValueSource(doubles = {0.0, 10.5})
 		void testContains(double t) {
 			Range range = new Range(0.0, 10.5);
@@ -38,6 +39,7 @@ class RangeTest {
 			System.out.println(result);
 		}
 		@ParameterizedTest
+		//パラメータを入力
 		@ValueSource(doubles = {-0.1, 10.6})
 		void testContains2(double t) {
 			Range range = new Range(0.0, 10.5);
@@ -51,6 +53,7 @@ class RangeTest {
 	@Nested
 	class range2{
 		@ParameterizedTest
+		//パラメータを入力
 		@ValueSource(doubles = {-5.1,5.1})
 		void testContains(double t) {
 			Range range = new Range(-5.1, 5.1);
@@ -59,6 +62,7 @@ class RangeTest {
 			System.out.println(result);
 		}
 		@ParameterizedTest
+		//パラメータを入力
 		@ValueSource(doubles = {-5.2,5.2})
 		void testContains2(double t) {
 			Range range = new Range(-5.1, 5.1);

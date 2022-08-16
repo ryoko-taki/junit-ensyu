@@ -2,6 +2,8 @@ package junit.tutorial.ex03.e01;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -31,9 +33,17 @@ class MonthlyCalendarTest {
 	
 	@Test
 	void testGetRemainingDays() {
-		MonthlyCalendar cal = new MonthlyCalendar();
-		assertEquals(15,cal.getRemainingDays());
-		System.out.println(cal.getRemainingDays());
+		MonthlyCalendar calender = new MonthlyCalendar(LocalDate.of(2012, 1, 31));
+		assertEquals(0,calender.getRemainingDays());
+		System.out.println(calender.getRemainingDays());
+		
+		MonthlyCalendar calender2 = new MonthlyCalendar(LocalDate.of(2012, 1, 30));
+		assertEquals(1,calender2.getRemainingDays());
+		System.out.println(calender2.getRemainingDays());
+		
+		MonthlyCalendar calender3 = new MonthlyCalendar(LocalDate.of(2012, 2, 1));
+		assertEquals(28,calender3.getRemainingDays());
+		System.out.println(calender3.getRemainingDays());
 	}
 
 }
