@@ -20,38 +20,51 @@ class RangeTest {
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 	}
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+	@AfterEach
+	void tearDown() throws Exception {
+    }
 
 	@Nested
-	class range{
-		@BeforeEach
-		void setUp() throws Exception {
-		}
-		@AfterEach
-		void tearDown() throws Exception {
-	    }
-		
-		Range range = new Range(0.0, 10.5);
+	class range{	
 		@ParameterizedTest
-		@ValueSource(doubles = {-0.1, 0.0, 10.5, 10.6})
-		void testContains() {
-			assertTrue(true, "Error");
+		@ValueSource(doubles = {0.0, 10.5})
+		void testContains(double t) {
+			Range range = new Range(0.0, 10.5);
+			boolean result = range.contains(t);
+			assertTrue(result);
+			System.out.println(result);
+		}
+		@ParameterizedTest
+		@ValueSource(doubles = {-0.1, 10.6})
+		void testContains2(double t) {
+			Range range = new Range(0.0, 10.5);
+			boolean result = range.contains(t);
+			assertFalse(result);
+			System.out.println(result);
 		}
 	}
 	
+	
 	@Nested
 	class range2{
-		@BeforeEach
-		void setUp() throws Exception {
-		}
-		@AfterEach
-		void tearDown() throws Exception {
-	    }
-		
-		Range range = new Range(5.1, 5.1);
 		@ParameterizedTest
-		@ValueSource(doubles = {-5.2, -5.1, 5.1, 5.2})
-		void testContains1() {
-			assertTrue(true, "Error");
+		@ValueSource(doubles = {-5.1,5.1})
+		void testContains(double t) {
+			Range range = new Range(-5.1, 5.1);
+			boolean result = range.contains(t);
+			assertTrue(result);
+			System.out.println(result);
+		}
+		@ParameterizedTest
+		@ValueSource(doubles = {-5.2,5.2})
+		void testContains2(double t) {
+			Range range = new Range(-5.1, 5.1);
+			boolean result = range.contains(t);
+			assertFalse(result);
+			System.out.println(result);
 		}
 	}
 	
